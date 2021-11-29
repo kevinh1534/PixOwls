@@ -1,23 +1,28 @@
 #!/bin/bash
 
-cd /mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/NFT
-solana config set -u https://api.devnet.solana.com
+network="devnet"
+
+cwd=$(pwd)
+cd $cwd 
+
+solana config set -u https://api.$network.solana.com
 
 #hashlips
 cd hashlips_art_engine
 npm run generate #generate artwork
 
 #metaplex
-cd /mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/NFT/metaplex-master
+cd $cwd/metaplex-master
 rm -r ./.cache
 rm -r ./assets/*
 cp -a ../hashlips_art_engine/build/images/. ./assets
 cp -a ../hashlips_art_engine/build/json/. ./assets
 rm ./assets/_metadata.json
-key_loc=/mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/solana_wallet/dev-keypair.json
-npx ts-node ./js/packages/cli/src/candy-machine-cli.ts upload ./assets --env devnet --keypair $key_loc
-npx ts-node ./js/packages/cli/src/candy-machine-cli.ts create_candy_machine --env devnet --keypair $key_loc
-npx ts-node ./js/packages/cli/src/candy-machine-cli.ts update_candy_machine --env devnet --keypair $key_loc --price .0001 --date "25 Nov 2021 8:00:00 PST"
+key_loc=/mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/solana_wallet/$network-keypair.json
+npx ts-node ./js/packages/cli/src/candy-machine-cli.ts upload ./assets --env $network --keypair $key_loc
+exit 1
+npx ts-node ./js/packages/cli/src/candy-machine-cli.ts create_candy_machine --env $network --keypair $key_loc
+npx ts-node ./js/packages/cli/src/candy-machine-cli.ts update_candy_machine --env $network --keypair $key_loc --price .0001 --date "25 Nov 2021 8:00:00 PST"
 
 #candy machine
 cd ../candy-machine-mint-main
@@ -26,7 +31,7 @@ cd ../candy-machine-mint-main
 #start_date=1637856000
 #config=9FoAVdZ3vjVn1GezAJxUYryJA3W17T1z9fvYQ4tFoSDo
 
-config_file=$(</mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/NFT/metaplex-master/.cache/devnet-temp)
+config_file=$(<$cwd/metaplex-master/.cache/$network-temp)
 config=$(echo $config_file | grep -o -P 'config.{48}'| cut -c10-52)
 pub_key=$(echo $config_file | grep -o -P 'authority.{48}'| cut -c13-56)
 cm_address=$(echo $config_file | grep -o -P 'candyMachineAddress.{66}'| cut -c23-66)
@@ -37,5 +42,5 @@ echo "REACT_APP_CANDY_MACHINE_ID=$cm_address" >> .env
 echo "REACT_APP_TREASURY_ADDRESS=$pub_key" >> .env
 echo "REACT_APP_CANDY_START_DATE=$start_date" >>  .env
 echo -e "\n" >> .env
-echo "REACT_APP_SOLANA_NETWORK=devnet" >> .env
-echo "REACT_APP_SOLANA_RPC_HOST=https://explorer-api.devnet.solana.com" >> .env
+echo "REACT_APP_SOLANA_NETWORK=$network" >> .env
+echo "REACT_APP_SOLANA_RPC_HOST=https://explorer-api.$network.solana.com" >> .env

@@ -9,23 +9,23 @@
   "attributes": [
     {
       "trait_type": "Background",
-      "value": "Blue"
+      "value": "Orange"
     },
     {
       "trait_type": "Type",
-      "value": "Ginger"
-    },
-    {
-      "trait_type": "Facewear",
-      "value": "Vipers"
-    },
-    {
-      "trait_type": "Headwear",
-      "value": "Beanie"
+      "value": "Midnight"
     },
     {
       "trait_type": "Clothing",
-      "value": "Kimono"
+      "value": "Chainmail"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "TopHat"
+    },
+    {
+      "trait_type": "Facewear",
+      "value": "None"
     }
   ],
   "properties": {
