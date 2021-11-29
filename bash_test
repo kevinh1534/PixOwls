@@ -1,0 +1,12 @@
+#!/bin/bash
+cd /mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/NFT
+
+config_file=$(<metaplex-master/.cache/devnet-temp)
+config=$(echo $config_file | grep -o -P 'config.{48}'| cut -c10-52)
+pubkey=$(echo $config_file | grep -o -P 'authority.{48}'| cut -c13-56)
+cm_address=$(echo $config_file | grep -o -P 'candyMachineAddress.{66}'| cut -c23-66)
+start_date=$(echo $config_file | grep -o -P 'startDate.{12}' | cut -c12-66)
+echo $config
+echo $pubkey
+echo $cm_address
+echo $start_date

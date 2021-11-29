@@ -1,0 +1,46 @@
+{
+  "name": "PixOwls Test #0",
+  "symbol": "OWLtest",
+  "description": "Remember to replace this description",
+  "seller_fee_basis_points": 500,
+  "image": "image.png",
+  "external_url": "",
+  "edition": 0,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Type",
+      "value": "Ginger"
+    },
+    {
+      "trait_type": "Facewear",
+      "value": "Vipers"
+    },
+    {
+      "trait_type": "Headwear",
+      "value": "Beanie"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Kimono"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "image.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "2axou42BhzzJWzbxub3RXjHUGcFCsziCDfYaxADofzFe",
+        "share": 100
+      }
+    ]
+  }
+}

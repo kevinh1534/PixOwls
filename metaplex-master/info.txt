@@ -1,0 +1,30 @@
+key loc:
+/mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/solana_wallet/test-keypair.json
+
+address:
+3wjPc8oPpECxoxReVsfYe15YLeHFq196YRfb99pZtLyS
+2axou42BhzzJWzbxub3RXjHUGcFCsziCDfYaxADofzFe
+
+commands:
+npx ts-node ./js/packages/cli/src/candy-machine-cli.ts upload ./assets --env mainnet-beta --keypair /mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/solana_wallet/test-keypair.json
+
+npx ts-node ./js/packages/cli/src/candy-machine-cli.ts create_candy_machine --env mainnet-beta --keypair /mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/solana_wallet/test-keypair.json
+
+npx ts-node ./js/packages/cli/src/candy-machine-cli.ts update_candy_machine --env mainnet-beta --keypair /mnt/c/Users/kevin/OneDrive/Documents/Other/Solana/solana_wallet/test-keypair.json --price .0001 --date "25 Nov 2021 8:00:00 PST"
+
+
+config:
+config: FBfLXGAQXMbTmNGfMHuf74wa9KG3JJgQpevWQTpNYEyU
+"authority" (treasury):"2axou42BhzzJWzbxub3RXjHUGcFCsziCDfYaxADofzFe",
+"candyMachineAddress"(candymachine id):"H94xfsRumP5ivx9bEDjJFFjh174h4UaqPiJ9zanTRdXJ",
+"startDate":1637856000
+
+
+into candy candy machine .env:
+REACT_APP_CANDY_MACHINE_CONFIG=BHmNW4NrxP3mLBGTLpatv4TfqtoezVEfhcZPRFbZKU6U
+REACT_APP_CANDY_MACHINE_ID=9WWfNDDgsHvFuPqdJH56jaTtxhhq7dksMaFq2NZ3CRCg
+REACT_APP_TREASURY_ADDRESS=2axou42BhzzJWzbxub3RXjHUGcFCsziCDfYaxADofzFe
+REACT_APP_CANDY_START_DATE=1637856000
+
+REACT_APP_SOLANA_NETWORK=devnet
+REACT_APP_SOLANA_RPC_HOST=https://explorer-api.devnet.solana.com
